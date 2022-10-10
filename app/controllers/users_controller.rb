@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to user_path(@user.id)
+      redirect_to user_path(@user.id), notice: "アカウントを作成しました"
     else
       render :new
     end
@@ -17,12 +17,17 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def edit 
-
+  def edit
+    @user = User.find(params[:id])
   end
 
   def update
-
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      redirect_to user_path(@user.id), notice: "プロフィールを編集しました"
+    else
+      render :edit
+    end
   end
 
   private 
