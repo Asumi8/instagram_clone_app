@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  
+  mount_uploader :image, ImageUploader
+
   before_validation { email.downcase! }
 
   validates :name, presence: true, length: { maximum: 30 }
@@ -6,9 +9,7 @@ class User < ApplicationRecord
   
   has_secure_password 
   validates :password, length: { minimum: 6 }
-  
-  validates :image, presence: true
 
-  mount_uploader :image, ImageUploader
+  validates :image, presence: true
   
 end

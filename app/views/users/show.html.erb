@@ -1,0 +1,9 @@
+<h1>Profile</h1>
+
+<p id="notice"><%= notice %>></p>
+
+<p>name: <%= @user.name %></p>
+<p>email: <%= @user.email %></p>
+<p>image: <%= image_tag @user.image.url %></p>
+
+<%= link_to "Edit", edit_user_path(@user) %>
