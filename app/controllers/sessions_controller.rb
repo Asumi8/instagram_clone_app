@@ -6,8 +6,8 @@ class SessionsController < ApplicationController
 
   def create 
     user = User.find_by(email: params[:session][:email].downcase) #ログイン画面で入力されたemailを取得 
-    if user && user.authenticate(params[:session][:password])
-      session[:user_id] = user.id
+    if user && user.authenticate(params[:session][:password])#emailとパスワードが一致していたら
+      session[:user_id] = user.id #セッションにユーザーIDを登録する
       redirect_to user_path(user.id)
     else
       flash.now[:danger] = "ログインに失敗しました"

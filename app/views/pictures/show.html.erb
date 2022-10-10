@@ -1,0 +1,9 @@
+<h1>詳細</h1>
+
+<p id="notice"><%= notice %>></p>
+
+<p>content: <%= @picture.content %></p>
+<p>image: <%= image_tag @picture.image.url %></p>
+
+<%= link_to "Edit", edit_picture_path(@picture.id) %>
+<%= link_to "Back", pictures_path %>
