@@ -9,4 +9,7 @@ class User < ApplicationRecord
   validates :image, presence: true
   
   has_many :pictures
+  
+  has_many :favorites, dependent: :destroy 
+  has_many :favorite_pictures, through: :favorites, source: :picture #sourceの先はモデル名
 end
