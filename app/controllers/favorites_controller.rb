@@ -1,7 +1,7 @@
 class FavoritesController < ApplicationController
 
   def index 
-
+    @favorite = current_user.favorites
   end
 
   def create 
@@ -11,7 +11,6 @@ class FavoritesController < ApplicationController
 
   def destroy
     favorite = current_user.favorites.find_by(id: params[:id]).destroy
-    redirect_to pictures_path, notice: "#{favorite.picture.user.name}さんのブログをお気に入り登録しました"
+    redirect_to pictures_path, notice: "#{favorite.picture.user.name}さんのブログのお気に入りを解除しました"
   end
-
 end

@@ -1,0 +1,20 @@
+<h1>お気に入り一覧</h1>
+
+
+  <% @favorite.each do |favorite|%>
+  <p><%= favorite.picture.user.name%>さんのお気に入りたち </p>
+    <div>
+      <p>投稿者: <%= favorite.picture.user.name %></p>
+      <p>content: <%= favorite.picture.content %></p>
+      <p>image: <%= image_tag favorite.picture.image.url %></p>
+    </div>
+  <% end %>
+
+<%= link_to '新規投稿', new_picture_path %>
+<%= link_to '投稿一覧', pictures_path %>
+
+<style>
+  p img{
+    height:150px;
+  }
+</style>

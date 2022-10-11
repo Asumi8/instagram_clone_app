@@ -1,6 +1,4 @@
-<h1>Profile</h1>
-
-<p id="notice"><%= notice %>></p>
+<h1><%= @user.name%>さんのProfile</h1>
 
 <p>name: <%= @user.name %></p>
 <p>email: <%= @user.email %></p>
@@ -8,3 +6,10 @@
 
 <%= link_to "編集", edit_user_path(@user.id), data: { confirm: '本当に編集していいですか？'} %>
 <%= link_to "一覧", pictures_path %>
+<%= link_to "お気に入り一覧", favorites_path %>
+
+<style>
+  p img{
+    height:150px;
+  }
+</style>
