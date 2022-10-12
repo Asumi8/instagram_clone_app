@@ -1,4 +1,5 @@
 class PicturesController < ApplicationController
+  before_action :ensure_current_user, only: [:edit, :update, :destroy]
 
   def index 
     @pictures = Picture.all
@@ -56,5 +57,13 @@ class PicturesController < ApplicationController
 
   def picture_params
     params.require(:picture).permit(:content, :image, :image_cache)
+  end
+  
+  def ensure_current_user
+    @picture = Picture.find(params[:id])
+    unless @picture.user_id == current_user.id
+      flash[:notice]= "権限がありません"
+      redirect_to pictures_path
+    end
   end
 end

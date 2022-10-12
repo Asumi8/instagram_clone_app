@@ -4,8 +4,9 @@
 <p>email: <%= @user.email %></p>
 <p>image: <%= image_tag @user.image.url %></p>
 
-<%= link_to "編集", edit_user_path(@user.id), data: { confirm: '本当に編集していいですか？'} %>
-<%= link_to "一覧", pictures_path %>
+<% if @user.id == current_user.id %>
+  <%= link_to "編集", edit_user_path(@user.id), data: { confirm: '本当に編集していいですか？'} %>
+<% end %>
 <%= link_to "お気に入り一覧", favorites_path %>
 
 <style>

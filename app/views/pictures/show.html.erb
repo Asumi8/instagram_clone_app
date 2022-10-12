@@ -13,6 +13,7 @@
   <% end %>
 <% end %>
 
-
-<%= link_to "Edit", edit_picture_path(@picture.id) %>
+<% if @picture.user_id == current_user.id %> <!--ユーザーIDの一致がtrueの時に表示-->
+  <%= link_to "Edit", edit_picture_path(@picture.id) %>
+<% end %>
 <%= link_to "Back", pictures_path %>

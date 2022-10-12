@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :login_required, only: [:new, :create]
+  before_action :ensure_current_user, only: [:edit, :update, :destroy]
 
   def new
     @user = User.new
@@ -35,6 +36,14 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :image, :image_cache)
+  end
+
+  def ensure_current_user
+    @user = User.find(params[:id])
+    unless @user.id == current_user.id
+      flash[:notice]= "権限がありません"
+      redirect_to pictures_path
+    end
   end
 
 end
