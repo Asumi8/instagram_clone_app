@@ -1,8 +1,6 @@
 <h1>お気に入り一覧</h1>
 
-
   <% @favorite.each do |favorite|%>
-  <p><%= favorite.picture.user.name%>さんのお気に入りたち </p>
     <div>
       <p>投稿者: <%= favorite.picture.user.name %></p>
       <p>content: <%= favorite.picture.content %></p>
