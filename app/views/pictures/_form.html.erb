@@ -10,14 +10,33 @@
     </div>
   <% end %>
   
-  <%= f.label :content %>
-  <%= f.text_field :content %>
+  <div class = "container">
+    <div class = "row">
+      <div class = "col-md-6 offset-md-3">
+        <div class = "card">
+          <div class = "card-body">
+            <%= f.label :content %>
+            <p><%= f.text_field :content %></p>
 
-  <%= f.label :image %>
-  <%= image_tag( picture.image.url) if picture.image && picture.image.url %>
-  <%= f.file_field :image %>
-  <%= f.hidden_field :image_cache %>
-
-  <%= f.submit '投稿する！' %>
-  <%= link_to '一覧に戻る', pictures_path %>
+            <%= f.label :image %>
+            <p><%= image_tag( picture.image.url) if picture.image && picture.image.url %></p>
+            <p><%= f.file_field :image %></p>
+            <%= f.hidden_field :image_cache %>
+            
+            <p><%= f.submit '投稿する！' %></p>
+            <%= link_to '一覧に戻る', pictures_path %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 <% end %>
+
+<style>
+  .card {
+    background-color:#edeff0;
+  }
+  p img{
+    height:200px;
+  }
+</style>

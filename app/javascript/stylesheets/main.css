@@ -1,0 +1,15 @@
+.btn a {
+  /* color:#ffffff; */
+  font-weight:normal;
+}
+
+nav {
+  text-align: right;
+}
+
+h1{
+  font-size: 2rem;
+  margin: 10px auto;
+  text-align: center;
+}
+

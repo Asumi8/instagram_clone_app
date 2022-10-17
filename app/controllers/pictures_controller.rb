@@ -15,7 +15,7 @@ class PicturesController < ApplicationController
 
   def create
     @picture = current_user.pictures.build(picture_params) #ログインしているユーザのpicturesメソッドをbuild
-    render :new and return if params[:back]
+    render :new and return if params[:back] #return render:new ガード句
     if @picture.save 
       ConfirmMailer.confirm_mail(@picture).deliver
       redirect_to pictures_path, notice: "投稿しました！確認メールを送信しました！"

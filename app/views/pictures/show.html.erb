@@ -1,19 +1,38 @@
 <h1>詳細</h1>
 
-<p id="notice"><%= notice %>></p>
+<div class = "container">
+  <div class = "row">
+    <div class = "col-md-6 offset-md-3">
+      <div class = "card">
+        <div class = "card-body">
+          <p>content: <%= @picture.content %></p>
+          <p>image: <%= image_tag @picture.image.url %></p>
 
-<p>content: <%= @picture.content %></p>
-<p>image: <%= image_tag @picture.image.url %></p>
+          <% unless @picture.user_id == current_user.id %> <!--ブログを書いた人と、ログイン中のユーザが同じでない時-->
+            <% if @favorite.present? %>
+              <%= link_to "お気に入りを解除する", favorite_path(id: @favorite.id), method: :delete, class:"btn btn-danger" %> <!--classはboostrapのものと思われる-->
+            <% else%>
+              <%= link_to "お気に入りする", favorites_path(picture_id: @picture.id), method: :post, class:"btn btn-primary" %>
+            <% end %>
+          <% end %>
 
-<% unless @picture.user_id == current_user.id %> <!--ブログを書いた人と、ログイン中のユーザが同じでない時-->
-  <% if @favorite.present? %>
-    <%= link_to "お気に入りを解除する", favorite_path(id: @favorite.id), method: :delete, class:"btn btn-danger" %> <!--classはboostrapのものと思われる-->
-  <% else%>
-    <%= link_to "お気に入りする", favorites_path(picture_id: @picture.id), method: :post, class:"btn btn-primary" %>
-  <% end %>
-<% end %>
+          <% if @picture.user_id == current_user.id %> <!--ユーザーIDの一致がtrueの時に表示-->
+            <%= link_to "Edit", edit_picture_path(@picture.id) %>
+          <% end %>
+          <br>
+          <%= link_to "Back", pictures_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<% if @picture.user_id == current_user.id %> <!--ユーザーIDの一致がtrueの時に表示-->
-  <%= link_to "Edit", edit_picture_path(@picture.id) %>
-<% end %>
-<%= link_to "Back", pictures_path %>
+<style>
+  p img{
+    height:200px;
+  }
+
+  .card {
+    background-color:#edeff0;
+  }
+</style>

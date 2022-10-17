@@ -1,18 +1,31 @@
 <h1>お気に入り一覧</h1>
+<div class = "container">
+    <div class = "row">
+      <div class = "col-md-6 offset-md-3">
+        <div class = "card">
+          <div class = "card-body">
+            <% @favorite.each do |favorite|%>
+              <div>
+                <p>投稿者: <%= favorite.picture.user.name %></p>
+                <p>content: <%= favorite.picture.content %></p>
+                <p>image: <%= image_tag favorite.picture.image.url %></p>
+              </div>
+            <% end %>
 
-  <% @favorite.each do |favorite|%>
-    <div>
-      <p>投稿者: <%= favorite.picture.user.name %></p>
-      <p>content: <%= favorite.picture.content %></p>
-      <p>image: <%= image_tag favorite.picture.image.url %></p>
+          <%= link_to '新規投稿', new_picture_path %>
+          <%= link_to '投稿一覧', pictures_path %>
+        </div>
+      </div>
     </div>
-  <% end %>
-
-<%= link_to '新規投稿', new_picture_path %>
-<%= link_to '投稿一覧', pictures_path %>
+  </div>
+</div>
 
 <style>
   p img{
-    height:150px;
+    height:200px;
+  }
+
+  .card {
+    background-color:#edeff0;
   }
 </style>

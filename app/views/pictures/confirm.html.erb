@@ -1,15 +1,33 @@
 <h1>確認</h1>
 
-<%= form_with(model: @picture, url:pictures_path , local: true) do |f| %>
-  <p>content: <%= @picture.content %></p>
-  <p>image: <%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %></p>
-  <%= f.submit '投稿する！' %>
+<div class = "container">
+  <div class = "row">
+    <div class = "col-md-6 offset-md-3">
+      <div class = "card">
+        <div class = "card-body">
+          <%= form_with(model: @picture, url:pictures_path , local: true) do |f| %>
+            <p>content: <%= @picture.content %></p>
+            <p>image: <%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %></p>
+            <%= f.submit '投稿する！' %>
+            <%= f.hidden_field :content %>
+            <%= f.hidden_field :image_cache %>
+          <% end %>
+          <%= form_with(model: @picture, url:new_picture_path, local:true, method:"get") do |f| %>
+            <%= f.hidden_field :image_cache %>
+            <%= f.submit '戻る', name: 'back' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <%= f.hidden_field :content %>
-  <%= f.hidden_field :image_cache %>
-<% end %>
+<style>
+  p img{
+    height:200px;
+  }
 
-<%= form_with(model: @picture, url:new_picture_path, local:true, method:"get") do |f| %>
-  <%= f.hidden_field :image_cache %>
-  <%= f.submit '戻る', name: 'back' %>
-<% end %>
+  .card {
+    background-color:#edeff0;
+  }
+</style>

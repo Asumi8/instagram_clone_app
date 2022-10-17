@@ -14,4 +14,6 @@ ja:
         current_password: 現在のパスワード
         password: パスワード
         password_confirmation: 確認用パスワード
+        image: 画像
         remember_me: ログインを記憶
+        

@@ -12,20 +12,40 @@
     </div>
   <% end %>
 
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+<div class = "container">
+  <div class = "row">
+    <div class = "col-md-6 offset-md-3">
+      <div class = "card">
+        <div class = "card-body">
+          <%= f.label :name %>
+          <p><%= f.text_field :name %></p>
 
-  <%= f.label :email %>
-  <%= f.text_field :email %>
+          <%= f.label :email %>
+          <p><%= f.text_field :email %></p>
 
-  <%= f.label :password  %>
-  <%= f.text_field :password %>
+          <%= f.label :password  %>
+          <p><%= f.text_field :password %></p>
 
-  <%= f.label :password_confirmation %>
-  <%= f.text_field :password_confirmation %>
-  
-  <%= f.label :image %>
-  <%= f.file_field :image %>
+          <%= f.label :password_confirmation %>
+          <p><%= f.text_field :password_confirmation %></p>
+          
+          <%= f.label :image %>
+          <p><%= f.file_field :image %></p>
 
-  <%= f.submit '更新する！' %>
+          <p><%= f.submit '更新する！' %></p>
 <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  p img{
+    height:200px;
+  }
+
+  .card {
+    background-color:#edeff0;
+  }
+</style>
